@@ -3,8 +3,21 @@ Description=Early OOM Daemon
 Documentation=man:earlyoom(1) https://github.com/rfjakob/earlyoom
 
 [Service]
-EnvironmentFile=-:SYSCONFDIR:/default/earlyoom
-ExecStart=:TARGET:/earlyoom $EARLYOOM_ARGS
+EnvironmentFile=-/etc/default/earlyoom
+ExecStart=/usr/local/bin/earlyoom $EARLYOOM_ARGS
+DynamicUser=true
+PrivateTmp=true
+NoNewPrivileges=true
+RestrictRealtime=yes
+MemoryDenyWriteExecute=yes
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictSUIDSGID=true
+ProtectHome=true
+SystemCallArchitectures=native
+ReadOnlyPaths=/
+CapabilityBoundingSet=CAP_KILL CAP_IPC_LOCK
+AmbientCapabilities=CAP_KILL CAP_IPC_LOCK
 
 [Install]
 WantedBy=multi-user.target
