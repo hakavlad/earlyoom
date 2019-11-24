@@ -7,6 +7,7 @@ EnvironmentFile=-/etc/default/earlyoom
 ExecStart=/usr/local/bin/earlyoom $EARLYOOM_ARGS
 DynamicUser=true
 PrivateTmp=true
+PrivateNetwork=true
 NoNewPrivileges=true
 RestrictRealtime=yes
 MemoryDenyWriteExecute=yes
